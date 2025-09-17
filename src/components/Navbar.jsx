@@ -1,7 +1,35 @@
 import { NavLink, Link } from 'react-router-dom'
+import { useEffect, useState, useRef } from "react";
 import confetti from 'canvas-confetti'
 
 export default function Navbar() {
+
+    const [show, setShow] = useState(true);       // navbar visibility
+    const lastScrollY = useRef(0);               // store last scroll position
+
+    // handle scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        // scrolling down and past 100px → hide navbar
+        setShow(false);
+      } else {
+        // scrolling up → show navbar
+        setShow(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
     const handleFunHover = (e) => {
         const rect = e.currentTarget.getBoundingClientRect()
 
@@ -22,7 +50,7 @@ export default function Navbar() {
     }
 
     return (
-        <header className="nav">
+        <header className={`nav ${show ? "" : "hide"}`}>
             <div className="nav-inner">
                 {/* Left: logo with two overlapping images */}
                 <Link to="/" className="navlink" aria-label="Home">Felton Lim</Link>

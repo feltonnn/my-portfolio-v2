@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import { GlassElement } from "./GlassElement/GlassElement"
 
 export default function ExperienceItem({ company, period, image, description, align = "left", glow }) {
   const ref = useRef(null)
@@ -26,12 +27,24 @@ export default function ExperienceItem({ company, period, image, description, al
       ref={ref}
       className={`experience-item ${align} ${glow} ${isVisible ? "animate-glow" : ""}`}
     >
-      <div className="experience-text glass">
+      <div className="experience-header">
         <h3>{company}</h3>
         <span className="period">{period}</span>
-        <p>{description}</p>
       </div>
-      <img src={image} alt={`${company} project`} className="experience-img" />
+      <section className="experience-content">
+        {/* <div className="experience-text glass">
+          <p>{description}</p>
+        </div> */}
+        <GlassElement
+          radius={50}
+          depth={10}
+          blur={2}
+          chromaticAberration={5}
+          debug={false}>
+          <p>{description}</p>
+        </GlassElement>
+        <img src={image} alt={`${company} project`} className="experience-img" />
+      </section>
     </div>
   )
 }
