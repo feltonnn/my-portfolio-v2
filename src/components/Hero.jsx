@@ -19,10 +19,16 @@ export default function Hero() {
           <span className="highlight"> innovative</span>, and
           <span className="highlight"> clean</span> designs.
         </p>
-        <p className="location">📍 Based in <span className="highlight">Singapore</span>.</p>
+        <p className="location">
+          🇸🇬 Based in <span className="highlight">Singapore</span>. &nbsp;&nbsp;&nbsp;&nbsp; <br />
+          🇵🇭 Currently in <span className="highlight">Metro Manila</span>.
+        </p>
       </div>
       <div className="hero-right">
-        <div className="hero-image"></div>
+        <div className="hero-image">
+          {/* Position the GIF in the top-right corner */}
+          <img src="/hero/mew.gif" alt="Mew" className="hero-gif" />
+        </div>
       </div>
       <div className="overlay">
         {/* <GlassElement

@@ -1,7 +1,9 @@
-// src/components/Footer.jsx
+import Line from "./ui/Line";
+
 export default function Footer() {
   return (
     <footer className="footer">
+      <Line height="1px" width="100%" margin="20px 0" />
       <div className="footer-container">
         {/* Left column */}
         <div className="footer-col">

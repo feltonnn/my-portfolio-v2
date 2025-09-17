@@ -34,8 +34,8 @@ export default function Navbar() {
         const rect = e.currentTarget.getBoundingClientRect()
 
         // Top-right corner of the FUN link
-        const originX = (rect.right + window.scrollX) / window.innerWidth
-        const originY = (rect.top + window.scrollY) / window.innerHeight
+        const originX = rect.right  / window.innerWidth
+        const originY = rect.top  / window.innerHeight
 
         confetti({
             particleCount: 25,        // small burst
